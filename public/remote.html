@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quizly Remote</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <h1>Quizly Remote</h1>
+    <div id="joinBox">
+        <input type="text" id="nameInput" placeholder="Typ je naam">
+        <button id="joinBtn">Deelnemen</button>
+    </div>
+
+    <div id="answerBox" style="display:none;">
+        <h2>Kies een kleur:</h2>
+        <button id="btnRed" style="background:red">Rood</button>
+        <button id="btnBlue" style="background:blue">Blauw</button>
+        <button id="btnGreen" style="background:green">Groen</button>
+        <button id="btnYellow" style="background:yellow">Geel</button>
+    </div>
+
+    <script>
+        const socket = io();
+        const joinBox = document.getElementById('joinBox');
+        const answerBox = document.getElementById('answerBox');
+        const nameInput = document.getElementById('nameInput');
+
+        document.getElementById('joinBtn').addEventListener('click', () => {
+            const name = nameInput.value.trim();
+            if (name === '') return;
+            socket.emit('join', name);
+            joinBox.style.display = 'none';
+            answerBox.style.display = 'block';
+        });
+
+        document.getElementById('btnRed').addEventListener('click', () => socket.emit('answer', 0));
+        document.getElementById('btnBlue').addEventListener('click', () => socket.emit('answer', 1));
+        document.getElementById('btnGreen').addEventListener('click', () => socket.emit('answer', 2));
+        document.getElementById('btnYellow').addEventListener('click', () => socket.emit('answer', 3));
+    </script>
+</body>
+
+</html>

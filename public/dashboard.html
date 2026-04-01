@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quizly Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <h1>Quizly</h1>
+    <div id="players">
+        <h2>Deelnemers:</h2>
+        <ul id="playerList"></ul>
+    </div>
+    <button id="startBtn">Start Quiz</button>
+    <div id="questionBox" style="display:none;">
+        <h2 id="questionText"></h2>
+        <ul id="answerList"></ul>
+    </div>
+
+    <script>
+        const socket = io();
+        const playerList = document.getElementById('playerList');
+        const startBtn = document.getElementById('startBtn');
+        const questionBox = document.getElementById('questionBox');
+        const questionText = document.getElementById('questionText');
+        const answerList = document.getElementById('answerList');
+
+        socket.on('updatePlayers', players => {
+            playerList.innerHTML = '';
+            players.forEach(p => {
+                playerList.innerHTML += `<li>${p.name} - ${p.score}</li>`;
+            });
+        });
+
+        startBtn.addEventListener('click', () => {
+            socket.emit('startQuiz');
+        });
+
+        socket.on('newQuestion', q => {
+            questionBox.style.display = 'block';
+            questionText.innerText = q.question;
+            answerList.innerHTML = '';
+            q.answers.forEach((a, i) => {
+                answerList.innerHTML += `<li style="color:${q.colors[i]}">${a}</li>`;
+            });
+        });
+
+        socket.on('endQuiz', players => {
+            questionBox.style.display = 'none';
+            playerList.innerHTML = '';
+            players.sort((a, b) => b.score - a.score);
+            players.forEach((p, i) => {
+                const crown = i === 0 ? ' 🏆' : '';
+                playerList.innerHTML += `<li>${p.name} - ${p.score}${crown}</li>`;
+            });
+        });
+    </script>
+</body>
+
+</html>
