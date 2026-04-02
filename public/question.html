@@ -3,27 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Quizly Dashboard</title>
+    <title>Quizly Vraag</title>
     <link rel="stylesheet" href="style.css">
     <script src="/socket.io/socket.io.js"></script>
     <script src="client.js"></script>
 </head>
 
 <body>
-    <h1>Quizly</h1>
-
-    <div id="questionBox" style="display:none;">
+    <h1>Quizly Vraag</h1>
+    <div id="questionBox">
         <h2 id="questionText"></h2>
         <ul id="answerList"></ul>
         <p id="timer">30</p>
     </div>
-
-    <div id="players">
-        <h2>Deelnemers:</h2>
-        <ul id="playerList"></ul>
-    </div>
-
-    <button id="startBtn">Start Quiz</button>
 </body>
 
 </html>

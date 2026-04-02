@@ -13,10 +13,10 @@ button {
     padding: 15px 25px;
     margin: 10px;
     border: none;
+    border-radius: 5px;
     color: white;
     font-weight: bold;
     cursor: pointer;
-    border-radius: 5px;
 }
 
 button:hover {
@@ -24,6 +24,29 @@ button:hover {
 }
 
 #answerList li {
-    font-size: 20px;
-    margin: 5px 0;
+    font-size: 22px;
+    margin: 10px;
+}
+
+#timer {
+    font-size: 30px;
+    color: red;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+#joinBox,
+#answerBox,
+#scoreOnlyBox {
+    margin: 20px auto;
+    width: 80%;
+}
+
+#scoreOnlyBox p {
+    font-size: 30px;
+    color: green;
+    font-weight: bold;
 }
