@@ -3,27 +3,37 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Quizly Dashboard</title>
+    <title>Quizzly | Het Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="/socket.io/socket.io.js"></script>
-    <script src="client.js"></script>
+    <script src="client.js" defer></script>
 </head>
 
 <body>
-    <h1>Quizly</h1>
+    <div class="container">
+        <h1>Quizzly</h1>
 
-    <div id="questionBox" style="display:none;">
-        <h2 id="questionText"></h2>
-        <ul id="answerList"></ul>
-        <p id="timer">30</p>
+        <div id="lobby">
+            <h2>Wachten op deelnemers...</h2>
+            <ul id="playerList"></ul>
+            <button id="startBtn" class="btn btn-primary">Start de Quiz!</button>
+        </div>
+
+        <div id="questionBox" style="display:none;">
+            <p id="timer">30</p>
+            <h2 id="questionText">De Vraag komt hier...</h2>
+            <ul id="answerList"></ul>
+        </div>
+
+        <div id="leaderboard" style="display:none;">
+            <h2>Top Scores 🏆</h2>
+            <ul id="scoreList"></ul>
+            <button id="nextBtn" class="btn btn-primary">Volgende Vraag</button>
+            <button id="restartBtn" class="btn btn-primary" style="display:none;">Opnieuw Beginnen</button>
+        </div>
     </div>
-
-    <div id="players">
-        <h2>Deelnemers:</h2>
-        <ul id="playerList"></ul>
-    </div>
-
-    <button id="startBtn">Start Quiz</button>
 </body>
 
 </html>

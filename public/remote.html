@@ -3,31 +3,44 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Quizly Remote</title>
+    <title>Quizzly Remote</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="/socket.io/socket.io.js"></script>
-    <script src="client.js"></script>
+    <script src="client.js" defer></script>
 </head>
 
 <body>
-    <h1>Quizly Remote</h1>
+    <div class="container">
+        <h1>Quizzly</h1>
 
-    <div id="joinBox">
-        <input type="text" id="nameInput" placeholder="Typ je naam">
-        <button id="joinBtn">Deelnemen</button>
-    </div>
+        <div id="joinBox">
+            <h2>Klaar om te knallen?</h2>
+            <input type="text" id="nameInput" placeholder="Typ je nickname..." autocomplete="off">
+            <button id="joinBtn" class="btn btn-primary">Deelnemen!</button>
+        </div>
 
-    <div id="answerBox" style="display:none;">
-        <h2>Kies een kleur:</h2>
-        <button id="btnRed" style="background:red">Rood</button>
-        <button id="btnBlue" style="background:blue">Blauw</button>
-        <button id="btnGreen" style="background:green">Groen</button>
-        <button id="btnYellow" style="background:yellow">Geel</button>
-    </div>
+        <div id="waitBox" style="display:none;">
+            <h2>Klaar voor de start... 🏁</h2>
+            <p>De quizmaster start de quiz zo meteen!</p>
+        </div>
 
-    <div id="scoreOnlyBox" style="display:none;">
-        <h2>Je score:</h2>
-        <p id="myScore">0</p>
+        <div id="answerBox" style="display:none;">
+            <h2>Kies de kleur!</h2>
+            <div class="remote-grid">
+                <button id="btnRed" class="btn btn-remote">▲</button>
+                <button id="btnBlue" class="btn btn-remote">◆</button>
+                <button id="btnGreen" class="btn btn-remote">●</button>
+                <button id="btnYellow" class="btn btn-remote">■</button>
+            </div>
+        </div>
+
+        <div id="scoreOnlyBox" style="display:none;">
+            <p id="resultText">Wachten op resultaten...</p>
+            <p id="myScore">0</p>
+            <p>Blijf scherp, de volgende vraag komt eraan!</p>
+        </div>
     </div>
 </body>
 
