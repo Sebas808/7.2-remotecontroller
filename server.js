@@ -17,10 +17,11 @@ app.get('/remote', (req, res) => res.sendFile(path.join(__dirname, 'public', 're
 let players = [];
 let questions = [
     { question: "Wat is de hoofdstad van Nederland?", answers: ["Amsterdam", "Rotterdam", "Utrecht", "Den Haag"], correct: 0 },
-    { question: "Welke taal gebruikt deze server?", answers: ["Python", "PHP", "Node.js", "Java"], correct: 2 },
+    { question: "Wie schilderde de Mona Lisa?", answers: ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Rembrandt"], correct: 2 },
     { question: "Hoeveel is 7 x 7?", answers: ["42", "48", "49", "51"], correct: 2 },
-    { question: "Wie is de maker van Quizzly?", answers: ["Google AI", "Jij!", "Bill Gates", "Elon Musk"], correct: 1 },
-    { question: "Wat is de kleur van een banaan?", answers: ["Rood", "Blauw", "Geel", "Groen"], correct: 2 }
+    { question: "Welke van deze is een programmeertaal?", answers: ["CSS", "HTTP", "Python", "URL"], correct: 2 },
+    { question: "Wat is de kleur van een banaan?", answers: ["Rood", "Blauw", "Geel", "Groen"], correct: 2 },
+    { question: "Wat is een variabele?", answers: ["Een foutmelding", "Een vaste waarde", "Een type computer", "Een plek om data op te slaan"], correct: 3 }
 ];
 
 let currentQuestionIndex = -1;
